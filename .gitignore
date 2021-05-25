@@ -1,0 +1,7 @@
+.vscode
+build
+dist
+__pycache__
+test-audios
+main.spec
+ffmpeg.exe

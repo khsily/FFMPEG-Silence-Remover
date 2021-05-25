@@ -1,0 +1,1 @@
+pyinstaller -F --add-data "ffmpeg.exe;." main.py
