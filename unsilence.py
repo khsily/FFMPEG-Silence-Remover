@@ -14,10 +14,10 @@ def unsilence(input, outPath):
   commands = [
     f'mkdir .ffmpeg-tmp',
     f'copy {input} .ffmpeg-tmp/input.{ext}'.replace('/', '\\'),
-    f'{ffmpeg_path} -i .ffmpeg-tmp/input.{ext} -af silenceremove=stop_periods=-1:stop_threshold=0.0005:start_mode=all .ffmpeg-tmp/tmp.wav -y', # 사일런스 제거
-    f'{ffmpeg_path} -i .ffmpeg-tmp/tmp.wav -af apad=pad_dur=0.4 .ffmpeg-tmp/tmp2.wav -y', # 뒤쪽에 0.4초 사일런스 추가
-    f'{ffmpeg_path} -i .ffmpeg-tmp/tmp2.wav -af adelay=200:all=true .ffmpeg-tmp/tmp3.wav -y', # 앞쪽에 0.2초 사일런스 추가
-    f'{ffmpeg_path} -i .ffmpeg-tmp/tmp3.wav -filter:a volume=2.5 {outH} -y', # 볼륨 2.5배
+    f'{ffmpeg_path} -i .ffmpeg-tmp/input.{ext} -af silenceremove=stop_periods=-1:stop_threshold=0.0005:start_mode=all .ffmpeg-tmp/tmp.wav -y', # Remove Slience
+    f'{ffmpeg_path} -i .ffmpeg-tmp/tmp.wav -af apad=pad_dur=0.4 .ffmpeg-tmp/tmp2.wav -y', # Add 0.4s slience at the end
+    f'{ffmpeg_path} -i .ffmpeg-tmp/tmp2.wav -af adelay=200:all=true .ffmpeg-tmp/tmp3.wav -y', # Add 0.2s slience at the beginning
+    f'{ffmpeg_path} -i .ffmpeg-tmp/tmp3.wav -filter:a volume=2.5 {outH} -y', # Volume 2.5 times up
     f'copy {outH} {outS}'.replace('/', '\\'),
     'rmdir /s /q .ffmpeg-tmp',
   ]
