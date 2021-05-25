@@ -1,7 +1,7 @@
 # Python FFMPEG Silence Remover
 ffmpeg를 활용한 오디오 공백 제거
 
-## Preoare
+## Getting started
 1. Download ffmpeg: https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z
 2. Move bin/ffmpeg.exe to project root
 
