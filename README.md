@@ -12,6 +12,7 @@ $ python ./main.py
 ```
 
 ## Packaging
+you need to install pyinstaller before start packaging
 ```
 $ start package.bat
 ```
