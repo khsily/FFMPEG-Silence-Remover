@@ -12,7 +12,7 @@ def unsilence(input, outPath):
   outS = outputName + 'S' + '.wav'
 
   commands = [
-    'rmdir /s /q .ffmpeg-tmp',
+    'if exist .ffmpeg-tmp rmdir /s /q .ffmpeg-tmp',
     f'mkdir .ffmpeg-tmp',
     f'copy "{input}" .ffmpeg-tmp/input.{ext}'.replace('/', '\\'),
     f'{ffmpeg_path} -i .ffmpeg-tmp/input.{ext} -af silenceremove=stop_periods=-1:stop_threshold=0.0005:start_mode=all .ffmpeg-tmp/tmp.wav -y', # Remove Slience
